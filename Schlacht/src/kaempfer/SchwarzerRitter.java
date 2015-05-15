@@ -4,7 +4,8 @@ import ausruestung.Ruestung;
 import ausruestung.Waffe;
 
 public class SchwarzerRitter extends Kaempfer {
-	
+	Waffe waffe;
+	Ruestung ruestung;
 	public SchwarzerRitter() {
 		super(100, 8, 200);
 		// TODO Auto-generated constructor stub
@@ -13,25 +14,37 @@ public class SchwarzerRitter extends Kaempfer {
 	@Override
 	public int kaempfen() {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		return 100*this.getGeschick();
 	}
 
 	@Override
 	public int abwehren(int angriff) {
 		// TODO Auto-generated method stub
-		return 0;
+		int deltaGesundheit;
+		
+			deltaGesundheit = angriff - 20;
+			if (deltaGesundheit > 0) {
+				deltaGesundheit = this.getGesundheit() - deltaGesundheit;
+			}else{
+				deltaGesundheit = this.getGesundheit();
+			}
+		
+		this.setGesundheit(deltaGesundheit);
+		if(this.getGesundheit()<=0){
+			System.out.println("Schwarzer Ritter wurde besiegt.");
+		}
+		return deltaGesundheit;
 	}
 
 	@Override
-	public int nimmWaffe(Waffe w) {
+	public void nimmWaffe(Waffe w) {
 		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
-	public int nimmRuestung(Ruestung r) {
+	public void nimmRuestung(Ruestung r) {
 		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }

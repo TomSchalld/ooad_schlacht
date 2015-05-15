@@ -13,25 +13,35 @@ public class Blobb extends Kaempfer {
 	@Override
 	public int kaempfen() {
 		// TODO Auto-generated method stub
-		return 0;
+		if(this.getWaffe()==null){
+			return this.getGeschick();
+		}
+		return this.getWaffe().getStaerke()*this.getGeschick();
 	}
 
 	@Override
 	public int abwehren(int angriff) {
 		// TODO Auto-generated method stub
-		return 0;
+		int neueGesundheit = this.getGesundheit()-angriff;
+		if(neueGesundheit<=0){
+			this.setGesundheit(0);
+			System.out.println("Blobb ist gefallen");
+		}else{
+			this.setGesundheit(neueGesundheit); 
+		}
+		return angriff;
 	}
 
 	@Override
-	public int nimmWaffe(Waffe w) {
+	public void nimmWaffe(Waffe w) {
 		// TODO Auto-generated method stub
-		return 0;
+		this.setWaffe(w);
 	}
 
 	@Override
-	public int nimmRuestung(Ruestung r) {
+	public void nimmRuestung(Ruestung r) {
 		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("Blobb kann keine Ruestung tragen.");
 	}
 
 	public Waffe getWaffe() {

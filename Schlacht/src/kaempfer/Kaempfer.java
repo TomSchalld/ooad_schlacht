@@ -18,8 +18,8 @@ public abstract class Kaempfer {
 	}
 	public abstract int kaempfen();
 	public abstract int abwehren(int angriff);
-	public abstract int nimmWaffe(Waffe w);
-	public abstract int nimmRuestung(Ruestung r);
+	public abstract void nimmWaffe(Waffe w);
+	public abstract void nimmRuestung(Ruestung r);
 	
 	
 	public int getGesundheit() {

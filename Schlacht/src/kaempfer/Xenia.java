@@ -24,15 +24,13 @@ public class Xenia extends Kaempfer {
 	}
 
 	@Override
-	public int nimmWaffe(Waffe w) {
+	public void nimmWaffe(Waffe w) {
 		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
-	public int nimmRuestung(Ruestung r) {
+	public void nimmRuestung(Ruestung r) {
 		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	public Waffe getWaffe() {
