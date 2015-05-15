@@ -16,16 +16,15 @@ public class Conan extends Kaempfer {
 	@Override
 	public int kaempfen() {
 		// TODO Auto-generated method stub
-		int aP = 0;
+		int aP = this.getGeschick();
 		Waffe tmp[] = this.getWaffen();
 		if (tmp[0] != null) {
-			aP += tmp[0].getStaerke() * this.getGeschick();
+			aP += tmp[0].zuhauen(this.getGeschick());
 			if (tmp[1] != null) {
-				aP += tmp[1].getStaerke() * this.getGeschick();
+				aP += tmp[1].zuhauen(this.getGeschick());
 			}
-		} else {
-			return this.getGeschick();
 		}
+		System.out.println("Conan greift mit " + aP + " an.");
 
 		return aP;
 	}
@@ -33,18 +32,13 @@ public class Conan extends Kaempfer {
 	@Override
 	public int abwehren(int angriff) {
 		// TODO Auto-generated method stub
-		int deltaGesundheit;
+		int deltaGesundheit=  angriff;
 		if (this.getRuestung() != null) {
-			deltaGesundheit = angriff - this.getRuestung().getSchutz();
-			if (deltaGesundheit < 0) {
-				deltaGesundheit = this.getGesundheit() - deltaGesundheit;
-			}
-		} else {
-			deltaGesundheit = this.getGesundheit() - angriff;
+			deltaGesundheit = this.getRuestung().abwehren(angriff);
 		}
-		
+		deltaGesundheit = this.getGesundheit() - deltaGesundheit;
 		this.setGesundheit(deltaGesundheit);
-		if(this.getGesundheit()<=0){
+		if (this.getGesundheit() <= 0) {
 			System.out.println("Conan ist gefallen.");
 		}
 		return deltaGesundheit;
@@ -85,4 +79,9 @@ public class Conan extends Kaempfer {
 		this.ruestung = ruestung;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Conan " + super.toString();
+	}
 }

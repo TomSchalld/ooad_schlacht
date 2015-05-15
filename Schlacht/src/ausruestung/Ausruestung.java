@@ -25,5 +25,8 @@ public class Ausruestung {
 	public void setPreis(int preis) {
 		this.preis = preis;
 	}
-	
+	@Override
+	public String toString() {
+		return this.getName();
+	}
 }
